@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+	<init>
+		<log text="AntilatencyAltEnvironmentAdditionalMarkers APL init"/>
+		<setBoolFromProperty result="bGradle" ini="Engine" section="/Script/AndroidRuntimeSettings.AndroidRuntimeSettings" property="bEnableGradle" default="true"/>
+        <if condition="bGradle">
+            <true>
+                <log text="Processing Antilatency Physical Configurable Environment using gradle"/>
+            </true>
+            <false>
+                <log text="Processing Antilatency Physical Configurable Environment using ant"/>
+            </false>
+        </if>
+
+		<setInt result="queriesSupportedAt" value="30"/>
+		<setIntFromProperty result="targetApiLevel" ini="Engine" section="/Script/AndroidRuntimeSettings.AndroidRuntimeSettings" property="TargetSDKVersion" default="-1"/>
+		<setBoolIsGreaterEqual result="queriesSupported" arg1="$I(targetApiLevel)" arg2="$I(queriesSupportedAt)" />
+	</init>
+	
+	<proguardAdditions>
+		<insert>
+-keep class com.antilatency.** {
+    *;
+}
+		</insert>
+	</proguardAdditions>
+
+	<baseBuildGradleAdditions>
+		<if condition="bGradle">
+			<true>
+                
+                <setBoolStartsWith result="AbsPluginDirNotDefined" source="$S(AbsPluginDir)" find="$S("/>
+                <if condition="AbsPluginDirNotDefined">
+                    <true>
+                        <!-- Workaround for UE 4.18-4.19 -->
+                        <setStringReplace result="PluginPath" source="$S(PluginDir)" find="\" with="/"/>
+                        <setBoolStartsWith result="IsEngineRelativePath" source="$S(PluginPath)" find="Engine/Plugins/"/>
+                        <if condition="IsEngineRelativePath">
+                            <true>
+                                <setStringReplace result="EnginePath" source="$S(EngineDir)" find="\" with="/"/>
+                                <setStringReplace result="EngineRelativePluginPath" source="$S(PluginPath)" find="Engine/Plugins/" with="/Plugins/"/>
+                                <setStringAdd result="PluginPath" arg1="$S(EnginePath)" arg2="$S(EngineRelativePluginPath)"/>
+                            </true>
+                        </if>
+                    </true>
+                    <false>
+                        <setString result="PluginPath" value="$S(AbsPluginDir)"/>
+                    </false>
+                </if>
+                
+				<insert>
+allprojects {
+    repositories {
+        repositories {
+            flatDir {
+				</insert>
+				<insertValue value="dirs '$S(PluginPath)/../../ThirdParty/Antilatency/Bin/Android'"/>
+				<insertNewline/>
+				<insert>
+            }
+        }
+    }
+}
+				</insert>
+			</true>
+		</if>
+	</baseBuildGradleAdditions>
+	
+	<buildGradleAdditions>
+		<if condition="bGradle">
+			<true>
+                <!--replace with dependencies.implementation-->
+				<insert>
+dependencies.implementation(name: 'AntilatencyPhysicalConfigurableEnvironment', ext: 'aar')
+				</insert>
+			</true>>
+		</if>
+	</buildGradleAdditions>
+
+	<AARImports>
+		<insertValue value="repository $S(PluginDir)/../../ThirdParty/Antilatency/Bin/Android/"/>
+		<insertNewline/>
+		<insertValue value="AntilatencyPhysicalConfigurableEnvironment"/>
+		<insertNewline/>
+	</AARImports>
+ 
+    <!-- optional files or directories to copy to Intermediate/Android/APK -->
+	<resourceCopies>
+		<if condition="bGradle">
+            <false>
+				<setBoolIsEqual result="isArmeabi-v7a" arg1="$S(Architecture)" arg2="armeabi-v7a" />
+				<if condition="isArmeabi-v7a">
+					<true>
+						<copyFile src="$S(PluginDir)/JavaLibs/AntilatencyPhysicalConfigurableEnvironment/jni/armeabi-v7a/libAntilatencyPhysicalConfigurableEnvironment.so"
+							dst="$S(BuildDir)/libs/armeabi-v7a/libAntilatencyPhysicalConfigurableEnvironment.so" />
+						<log text="Copying libAntilatencyPhysicalConfigurableEnvironment.so"/>
+					</true>
+				</if>
+				
+				<setBoolIsEqual result="isArm64-v8a" arg1="$S(Architecture)" arg2="arm64-v8a" />
+				<if condition="isArm64-v8a">
+					<true>
+						<copyFile src="$S(PluginDir)/JavaLibs/AntilatencyPhysicalConfigurableEnvironment/jni/arm64-v8a/libAntilatencyPhysicalConfigurableEnvironment.so"
+							dst="$S(BuildDir)/libs/isArm64-v8a/libAntilatencyPhysicalConfigurableEnvironment.so" />
+						<log text="Copying libAntilatencyPhysicalConfigurableEnvironment.so"/>
+					</true>
+				</if>
+			</false>
+        </if>
+	</resourceCopies>
+	
+	<!-- optional libraries to load in GameActivity.java before libUE4.so-->
+	<soLoadLibrary>
+        <log text="Loading AntilatencyPhysicalConfigurableEnvironment.so"/>
+		<loadLibrary name="AntilatencyPhysicalConfigurableEnvironment" failmsg="AntilatencyPhysicalConfigurableEnvironment library not loaded but required!" />
+		<log text="Loading AntilatencyPhysicalConfigurableEnvironment.so complete"/>
+	</soLoadLibrary> 
+ </root>
+ 
