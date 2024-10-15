@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+	<init>
+		<log text="AntilatencyDeviceNetwork APL init"/>
+        <setBoolFromProperty result="bGradle" ini="Engine" section="/Script/AndroidRuntimeSettings.AndroidRuntimeSettings" property="bEnableGradle" default="true"/>
+        <if condition="bGradle">
+            <true>
+                <log text="Processing AntilatencyDeviceNetwork AAR using gradle"/>
+            </true>
+            <false>
+                <log text="Processing AntilatencyDeviceNetwork AAR using ant"/>
+            </false>
+        </if>
+
+        <setInt result="queriesSupportedAt" value="30"/>
+        <setInt result="exportedExplicitValueRequiredAt" value="31"/>
+		<setIntFromProperty result="targetApiLevel" ini="Engine" section="/Script/AndroidRuntimeSettings.AndroidRuntimeSettings" property="TargetSDKVersion" default="-1"/>
+		<setBoolIsGreaterEqual result="queriesSupported" arg1="$I(targetApiLevel)" arg2="$I(queriesSupportedAt)" />
+        <setBoolIsGreaterEqual result="exportedExplicitValueRequired" arg1="$I(targetApiLevel)" arg2="$I(exportedExplicitValueRequiredAt)" />
+	</init>
+
+    <androidManifestUpdates>	
+		<loopElements tag="activity">
+			<setStringFromAttribute result="currentActivityName" tag="$" name="android:name"/>
+			<setBoolIsEqual result="isGameActivity" arg1="$S(currentActivityName)" arg2="com.epicgames.unreal.GameActivity"/>
+			
+			<if condition="isGameActivity">
+				<true>
+					<log text="Antilatency: manifest updates for $S(currentActivityName)"/>
+					<setElement result="usbDeviceAttachedIntentFilter" value="intent-filter" />
+					<addElement tag="activity" name="usbDeviceAttachedIntentFilter" />
+				
+					<setElement result="usbDeviceAttachedAction" value="action" />
+					<addAttribute tag="$usbDeviceAttachedAction" name="android:name" value="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+					<addElement tag="intent-filter" name="usbDeviceAttachedAction" />
+					
+					<setElement result="usbDeviceAttachedMetadata" value="meta-data" />
+					<addAttribute tag="$usbDeviceAttachedMetadata" name="android:name" value="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+					<addAttribute tag="$usbDeviceAttachedMetadata" name="android:resource" value="@xml/antilatency_usb_filter" />
+					<addElement tag="activity" name="usbDeviceAttachedMetadata" />
+
+                    <if condition="exportedExplicitValueRequired">
+                        <true>
+                            <addAttribute tag="activity" name="android:exported" value="true" />
+                        </true>
+                    </if>
+				</true>
+			</if>
+		</loopElements>
+		
+		<if condition="queriesSupported">
+			<true>
+                <setElement result="queriesTag" value="queries" />
+                <addElement tag="manifest" name="queriesTag" />
+
+                <setElement result="packageTag" value="package" />
+                <addAttribute tag="$packageTag" name="android:name" value="com.antilatency.antilatencyservice" />
+                <addElement tag="queries" name="packageTag" />
+			</true>
+		</if>
+    </androidManifestUpdates>
+
+    <proguardAdditions>
+        <insert>
+-keep class com.antilatency.** {
+    *;
+}
+        </insert>
+	</proguardAdditions>
+    
+    <baseBuildGradleAdditions>
+        <if condition="bGradle">
+            <true>
+
+                <setBoolStartsWith result="AbsPluginDirNotDefined" source="$S(AbsPluginDir)" find="$S("/>
+                <if condition="AbsPluginDirNotDefined">
+                    <true>
+                        <!-- Workaround for UE 4.18-4.19 -->
+                        <setStringReplace result="PluginPath" source="$S(PluginDir)" find="\" with="/"/>
+                        <setBoolStartsWith result="IsEngineRelativePath" source="$S(PluginPath)" find="Engine/Plugins/"/>
+                        <if condition="IsEngineRelativePath">
+                            <true>
+                                <setStringReplace result="EnginePath" source="$S(EngineDir)" find="\" with="/"/>
+                                <setStringReplace result="EngineRelativePluginPath" source="$S(PluginPath)" find="Engine/Plugins/" with="/Plugins/"/>
+                                <setStringAdd result="PluginPath" arg1="$S(EnginePath)" arg2="$S(EngineRelativePluginPath)"/>
+                            </true>
+                        </if>
+                    </true>
+                    <false>
+                        <setString result="PluginPath" value="$S(AbsPluginDir)"/>
+                    </false>
+                </if>
+                
+                <insert>
+allprojects {
+    repositories {
+        repositories {
+            flatDir {
+                </insert>
+                <insertValue value="dirs '$S(PluginPath)/../../ThirdParty/Antilatency/Bin/Android'"/>
+                <insertNewline/>
+                <insert>
+            }
+        }
+    }
+}
+                </insert>
+            </true>
+        </if>
+    </baseBuildGradleAdditions>
+    
+    <buildGradleAdditions>
+        <if condition="bGradle">
+            <true>
+                <!--replace with dependencies.implementation-->
+                <insert>
+dependencies {
+    implementation(name: 'AntilatencyDeviceNetwork', ext: 'aar')
+    implementation(name: 'AntilatencyUsbServiceInterfaces', ext: 'aar')
+}
+                </insert>
+            </true>
+        </if>
+    </buildGradleAdditions>
+
+    <AARImports>
+        <insertValue value="repository $S(PluginDir)/../../ThirdParty/Antilatency/Bin/Android/"/>
+        <insertNewline/>
+        <insertValue value="AntilatencyDeviceNetwork"/>
+        <insertNewline/>
+        <insertValue value="AntilatencyUsbServiceInterfaces"/>
+        <insertNewline/>
+    </AARImports>
+
+    <resourceCopies>
+        <if condition="bGradle">
+            <false>
+                <setBoolIsEqual result="isArmeabi-v7a" arg1="$S(Architecture)" arg2="armeabi-v7a" />
+                <if condition="isArmeabi-v7a">
+                    <true>
+                        <copyFile src="$S(BuildDir)/JavaLibs/AntilatencyDeviceNetwork/jni/armeabi-v7a/libAntilatencyDeviceNetwork.so"
+                        dst="$S(BuildDir)/libs/armeabi-v7a/libAntilatencyDeviceNetwork.so" />
+                        <log text="Copying libAntilatencyDeviceNetwork.so"/>
+                    </true>
+                    <false>
+                        <log text="\nERROR: Currently only Andorid armeabi-v7a and arm64-v8a archs are supported by AntilatencyDeviceNetwork library!\n"/>
+                    </false>
+                </if>
+				
+				<setBoolIsEqual result="isArm64-v8a" arg1="$S(Architecture)" arg2="arm64-v8a" />
+                <if condition="isArm64-v8a">
+                    <true>
+                        <copyFile src="$S(BuildDir)/JavaLibs/AntilatencyDeviceNetwork/jni/arm64-v8a/libAntilatencyDeviceNetwork.so"
+                        dst="$S(BuildDir)/libs/arm64-v8a/libAntilatencyDeviceNetwork.so" />
+                        <log text="Copying libAntilatencyDeviceNetwork.so"/>
+                    </true>
+                    <false>
+                        <log text="\nERROR: Currently only Andorid armeabi-v7a and arm64-v8a archs are supported by AntilatencyDeviceNetwork library!\n"/>
+                    </false>
+                </if>
+            </false>
+        </if>
+    </resourceCopies>
+    
+    <soLoadLibrary>
+        <log text="Loading AntilatencyDeviceNetwork.so"/>
+        <loadLibrary name="AntilatencyDeviceNetwork" failmsg="AntilatencyDeviceNetwork library not loaded but required!" />
+        <log text="Loading AntilatencyDeviceNetwork.so complete"/>
+    </soLoadLibrary>
+ </root>
+ 

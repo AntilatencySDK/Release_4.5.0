@@ -1,0 +1,150 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "4.5.0",
+  "FriendlyName": "Antilatency SDK",
+  "Description": "This is a subset of Antilatency SDK release 4.5.0. You can find all settings for it using this link:\n\nhttps://developers.antilatency.com/Sdk/Configurator_en.html#{\"Libraries\":{\"AltEnvironmentAdditionalMarkers\":true,\"AltEnvironmentArbitrary2D\":true,\"AltEnvironmentHorizontalGrid\":true,\"AltEnvironmentPillars\":true,\"AltEnvironmentRectangle\":true,\"AltEnvironmentSelector\":true,\"AltEnvironmentSides\":true,\"AltTracking\":true,\"Bracer\":true,\"DeviceNetwork\":true,\"HardwareExtensionInterface\":true,\"PhysicalConfigurableEnvironment\":true,\"RadioMetrics\":true,\"StorageClient\":true,\"TrackingAlignment\":true},\"OS\":{\"Android\":{\"aar\":true},\"WindowsDesktop\":{\"x64\":true}},\"Release\":\"4.5.0\",\"Target\":\"UnrealEngine\",\"TargetSettings\":{\"MathTypes\":\"Default\",\"UnrealEngineBlueprintsSamples\":true,\"UnrealEngineVersion\":5.1}}\n\n If you need to add or remove some feature to this subset, you can use the link above to make another subset that will match your requirements.",
+  "Category": "Antilatency",
+  "CreatedBy": "ALT LLC",
+  "CreatedByURL": "https://antilatency.com",
+  "CanContainContent": true,
+  "DocsURL": "https://developers.antilatency.com/",
+  "EnabledByDefault": false,
+  "Modules": [
+    {
+      "Name": "AntilatencyAltEnvironmentAdditionalMarkers",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyAltEnvironmentArbitrary2D",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyAltEnvironmentHorizontalGrid",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyAltEnvironmentPillars",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyAltEnvironmentRectangle",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyAltEnvironmentSelector",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyAltEnvironmentSides",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyAltTracking",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyBracer",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyDeviceNetwork",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyHardwareExtensionInterface",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyPhysicalConfigurableEnvironment",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyRadioMetrics",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyStorageClient",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyTrackingAlignment",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    }
+  ]
+}
