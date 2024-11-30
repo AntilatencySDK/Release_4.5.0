@@ -1,0 +1,51 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "4.5.0",
+  "FriendlyName": "Antilatency SDK",
+  "Description": "This is a subset of Antilatency SDK release 4.5.0. You can find all settings for it using this link:\n\nhttps://developers.antilatency.com/Sdk/Configurator_en.html#{\"Libraries\":{\"AltEnvironmentAdditionalMarkers\":false,\"AltEnvironmentArbitrary2D\":false,\"AltEnvironmentHorizontalGrid\":false,\"AltEnvironmentPillars\":false,\"AltEnvironmentRectangle\":false,\"AltEnvironmentSelector\":true,\"AltEnvironmentSides\":false,\"AltTracking\":true,\"Bracer\":true,\"DeviceNetwork\":true,\"HardwareExtensionInterface\":false,\"PhysicalConfigurableEnvironment\":false,\"RadioMetrics\":false,\"StorageClient\":false,\"TrackingAlignment\":false},\"OS\":{\"Android\":{\"aar\":true},\"WindowsDesktop\":{\"x64\":true}},\"Release\":\"4.5.0\",\"Target\":\"UnrealEngine\",\"TargetSettings\":{\"MathTypes\":\"Default\",\"UnrealEngineBlueprintsSamples\":false,\"UnrealEngineVersion\":5.1}}\n\n If you need to add or remove some feature to this subset, you can use the link above to make another subset that will match your requirements.",
+  "Category": "Antilatency",
+  "CreatedBy": "ALT LLC",
+  "CreatedByURL": "https://antilatency.com",
+  "CanContainContent": false,
+  "DocsURL": "https://developers.antilatency.com/",
+  "EnabledByDefault": false,
+  "Modules": [
+    {
+      "Name": "AntilatencyAltEnvironmentSelector",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyAltTracking",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyBracer",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    },
+    {
+      "Name": "AntilatencyDeviceNetwork",
+      "Type": "Runtime",
+      "LoadingPhase": "PostDefault",
+      "WhitelistPlatforms": [
+        "Android",
+        "Win64"
+      ]
+    }
+  ]
+}
