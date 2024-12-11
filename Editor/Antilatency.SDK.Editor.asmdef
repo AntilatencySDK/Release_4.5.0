@@ -1,0 +1,12 @@
+{
+  "name": "Antilatency.SDK.Editor",
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "autoReferenced": true,
+  "references": [
+    "Antilatency.SDK"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ]
+}
