@@ -1,0 +1,12 @@
+{
+  "name": "Antilatency.SDK",
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "autoReferenced": true,
+  "includePlatforms": [
+    "Editor",
+    "WindowsStandalone64",
+    "WindowsStandalone32",
+    "WSA"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "com.antilatency.sdk",
+  "displayName": "Antilatency SDK",
+  "version": "4.5.0",
+  "author": "Antilatency",
+  "homepage": "https://antilatency.com",
+  "unity": "2019.4",
+  "description": "This is a subset of Antilatency SDK release 4.5.0. You can find all settings for it using this link:\n\n https://developers.antilatency.com/Sdk/Configurator_en.html#{\"Libraries\":{\"AltEnvironmentAdditionalMarkers\":true,\"AltEnvironmentArbitrary2D\":false,\"AltEnvironmentHorizontalGrid\":false,\"AltEnvironmentPillars\":true,\"AltEnvironmentRectangle\":true,\"AltEnvironmentSelector\":true,\"AltEnvironmentSides\":true,\"AltTracking\":true,\"Bracer\":false,\"DeviceNetwork\":true,\"HardwareExtensionInterface\":true,\"IllumetryDisplay\":true,\"PhysicalConfigurableEnvironment\":true,\"RadioMetrics\":false,\"StereoGlasses\":true,\"StorageClient\":true,\"TrackingAlignment\":false},\"OS\":{\"Android\":{\"aar\":false},\"Linux\":{\"x86_64\":false},\"WindowsDesktop\":{\"x64\":true,\"x86\":true},\"WindowsUWP\":{\"arm64-v8a\":true,\"armeabi-v7a\":true,\"x64\":true}},\"Release\":\"4.5.0\",\"Target\":\"Unity\",\"TargetSettings\":{\"Components\":{\"AltEnvironmentComponents\":false,\"AltTrackingComponents\":false,\"BracerComponents\":false,\"DeviceNetworkComponents\":false,\"StorageClientComponents\":false},\"MathTypes\":\"UnityEngine.Math\",\"UnityComponents\":true,\"UnityVersion\":\"2019.x-2021.x\"}}\n\n If you need to add or remove some feature to this subset, you can use the link above to make another subset that will match your requirements.",
+  "keywords": [
+    "antilatency",
+    "alt",
+    "tracking"
+  ]
+}
