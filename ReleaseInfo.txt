@@ -1,0 +1,162 @@
+{
+  "Sdk": {
+    "Name": "Release",
+    "Category": "tags",
+    "Version": "4.5.0",
+    "Revision": "367"
+  },
+  "Dependencies": [
+    {
+      "Name": "AntilatencyApiGenerator",
+      "Category": "trunk",
+      "Version": null,
+      "Revision": "489"
+    },
+    {
+      "Name": "AntilatencyApiGeneratorCsml",
+      "Category": "trunk",
+      "Version": null,
+      "Revision": "18"
+    },
+    {
+      "Name": "AntilatencyBuild",
+      "Category": "trunk",
+      "Version": null,
+      "Revision": "78"
+    },
+    {
+      "Name": "AntilatencyBuildUnity",
+      "Category": "trunk",
+      "Version": null,
+      "Revision": "16"
+    },
+    {
+      "Name": "AntilatencyBuildUnrealEngine",
+      "Category": "trunk",
+      "Version": null,
+      "Revision": "21"
+    },
+    {
+      "Name": "AntilatencyLibraryLoader",
+      "Category": "trunk",
+      "Version": null,
+      "Revision": "31"
+    },
+    {
+      "Name": "AntilatencyLicense",
+      "Category": null,
+      "Version": null,
+      "Revision": "14"
+    }
+  ],
+  "BinaryDependencies": [
+    {
+      "Name": "AltEnvironmentAdditionalMarkers",
+      "Category": "tags",
+      "Version": "1.0.0",
+      "Revision": "21427"
+    },
+    {
+      "Name": "AltEnvironmentArbitrary2D",
+      "Category": "tags",
+      "Version": "1.1.0",
+      "Revision": "20411"
+    },
+    {
+      "Name": "AntilatencyAltEnvironmentHorizontalGrid",
+      "Category": "tags",
+      "Version": "1.1.0",
+      "Revision": "20045"
+    },
+    {
+      "Name": "AltEnvironmentPillars",
+      "Category": "tags",
+      "Version": "3.0.0",
+      "Revision": "25151"
+    },
+    {
+      "Name": "AltEnvironmentRectangle.Library",
+      "Category": "tags",
+      "Version": "1.0.0",
+      "Revision": "27702"
+    },
+    {
+      "Name": "AntilatencyAltEnvironmentSelector",
+      "Category": "tags",
+      "Version": "1.0.4",
+      "Revision": "21455"
+    },
+    {
+      "Name": "AltEnvironmentSides.Library",
+      "Category": "tags",
+      "Version": "1.0.0",
+      "Revision": "27934"
+    },
+    {
+      "Name": "AltTracking",
+      "Category": "tags",
+      "Version": "6.1.0",
+      "Revision": "26101"
+    },
+    {
+      "Name": "BracerCotask",
+      "Category": "tags",
+      "Version": "3.1.0",
+      "Revision": "26092"
+    },
+    {
+      "Name": "AntilatencyDeviceNetwork",
+      "Category": "tags",
+      "Version": "9.2.0",
+      "Revision": "28698"
+    },
+    {
+      "Name": "AntilatencyHardwareExtensionInterface",
+      "Category": "tags",
+      "Version": "3.1.0",
+      "Revision": "26096"
+    },
+    {
+      "Name": "AntilatencyPhysicalConfigurableEnvironment.Library",
+      "Category": "tags",
+      "Version": "1.0.1",
+      "Revision": "27649"
+    },
+    {
+      "Name": "AntilatencyRadioMetrics",
+      "Category": "tags",
+      "Version": "2.1.0",
+      "Revision": "26091"
+    },
+    {
+      "Name": "AntilatencyStereoGlasses.Library",
+      "Category": "tags",
+      "Version": "1.1.0",
+      "Revision": "26098"
+    },
+    {
+      "Name": "AntilatencyStorageClient",
+      "Category": "tags",
+      "Version": "4.1.0",
+      "Revision": "20035"
+    },
+    {
+      "Name": "AntilatencyTrackingAlignment",
+      "Category": "tags",
+      "Version": "2.1.0",
+      "Revision": "21018"
+    },
+    {
+      "Name": "IllumetryDisplay.Library",
+      "Category": "tags",
+      "Version": "1.1.0",
+      "Revision": "26097"
+    },
+    {
+      "Name": "UsbServiceInterfaces",
+      "Category": "tags",
+      "Version": "1.0.1",
+      "Revision": "24091"
+    }
+  ]
+}
