@@ -1,0 +1,13 @@
+{
+  "name": "Antilatency.SDK",
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "autoReferenced": true,
+  "includePlatforms": [
+    "Editor",
+    "Android",
+    "WindowsStandalone64",
+    "WindowsStandalone32",
+    "WSA"
+  ]
+}
